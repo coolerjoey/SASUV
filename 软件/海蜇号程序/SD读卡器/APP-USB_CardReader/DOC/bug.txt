@@ -1,0 +1,4 @@
+1.mylloc内存分配错误导致编译后ZI空间很大：http://www.openedv.com/posts/list/37120.htm
+2.tim1的pwm通道一初始化有问题
+3.加了rt-thread九轴解包使用memcpy有问题
+4.SD卡未插入时程序会卡死

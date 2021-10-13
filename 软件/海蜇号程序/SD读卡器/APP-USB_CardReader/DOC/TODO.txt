@@ -1,0 +1,8 @@
+1.ESP8266重新烧写固件
+2.parameter.c：vp.param_num的大小通过枚举值结构体个数或其他方法计算
+3.RGBLED使用DMA控制
+4.遥控器采用S.BUS协议，需要在相应的串口RX端加反相器
+5.atkp.c中打印中文会乱码
+6.bootloader使用systick时时钟没有除以8->新的库支持systick clk=系统时钟？
+7.把现在app的定时器计时中断改用systick
+8.增加外设检测不到退出机制，以防卡在一处

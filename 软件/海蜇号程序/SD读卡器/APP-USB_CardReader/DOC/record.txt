@@ -1,0 +1,10 @@
+1.wifi设置过程(当使用usb转ttl单独设置wifi时需要把uart8使能关闭)
+	发送查询指令："AT"；
+		若没有返回说明此时模块处于透传模式：
+			先返回指令模式：单独一包+++
+			然后退出透传模式：AT+CIPMODE=0
+	关闭回显：ATE0
+	设置工作模式为AP模式：AT+CEMODE=...
+	设置wifi名称及密码：AT+CWSAP=...
+	设置多链接：AT+CIPMUX=1
+	设置服务器端口号：AT+CIPSERVER=...

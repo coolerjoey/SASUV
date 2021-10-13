@@ -1,0 +1,30 @@
+1.串口接收中断：https://www.cnblogs.com/UnfriendlyARM/p/10321838.html
+2.编译后ZI-OUT很大但还能运行：http://www.openedv.com/forum.php?mod=viewthread&tid=37120&highlight=ZI	没有使用外部SRAM但是申请了空间
+3.STM32F427内部内存分为两大块： 
+	1.普通内存（地址从： 0X2000 0000 开始，共 192KB），这部分内存任何外设都可以访问。 
+	2.CCM 内存（地址从： 0X1000 0000 开始，共 64KB），这部分内存仅 CPU 可以访问， DMA 之类的不可以直接访问，使用时得特别注意！！
+	192KB	--	0x30000/1024 --	每个地址表示一个字节
+	64KB	--	0x10000/1024
+4.为什么要使用mallloc:https://blog.csdn.net/wstz_5461/article/details/74356690
+	当我们需要给一个新指针对象指向的地址赋值，如int *i;*i=1;是错误的。因为i没有指向确切的地址，所以不能通过i来向它要指向的地址赋值。而int *i;i=malloc(sizeof(int));*i=1;正确。因为malloc分配了一个明确的内存给i。
+5.卫星定位几个重要概念:https://www.cnblogs.com/happykoukou/p/5502517.html
+6.FATFS进入hardfault:http://www.openedv.com/thread-7415-1-1.html
+7.C/C++ 中头文件相互包含引发的对象未定义问题：https://blog.csdn.net/hazir/article/details/38600419
+8.遥控器PPM协议解析：http://www.openedv.com/thread-92675-1-1.html
+9.C语言中对结构体部分元素赋初值：https://blog.csdn.net/zhangyunshengblog/article/details/49661311
+10.bootloader跳转app之前需要关闭全部中断！！！https://www.amobbs.com/thread-5606964-1-1.html
+11.cortex-m3 systick中断：https://blog.csdn.net/qq_29344757/article/details/75090137
+12.移植USB编译报错“error: #101: “XXX” has already been declared in the current scope”：需要把stm32f4xx_hal_conf.h中的#define HAL_PCD_MODULE_ENABLED和#define HAL_HCD_MODULE_ENABLED屏蔽：https://www.pianshen.com/article/8619173281/
+13.移植USB时因为USB时钟频率必须为48Mhz，只有超频才能满足要求。或者降频：https://blog.csdn.net/zhengnianli/article/details/102946950
+14.logger.h中连接各字符成为字符串(C中多个宏字符串拼接)：https://blog.csdn.net/moxiaomomo/article/details/53453949?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.scontrol
+15.数据类型对应sscanf和printf输入输出格式
+	数据类型	对应格式
+	char		%c		-> 在输入输出时按照字符操作
+	uint8_t		%hhd	-> 在输入输出时按照整数操作
+	short		%hd
+	int			%d
+	long		%ld	%lx
+	long long	%lld %%llx
+	float		%f
+	double		%lf
+	string		%s
